@@ -16,9 +16,15 @@ export class DatePickerComponent implements OnInit {
     invalid: false,
   }
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+  }
+
+  check() {
+    if(this.datePicker < this.minDate || this.datePicker > this.maxDate) {
+      this.datePicker = ''
+    }
   }
 
   checkDate() {
