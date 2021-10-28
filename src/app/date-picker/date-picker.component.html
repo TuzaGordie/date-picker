@@ -1,0 +1,21 @@
+<div class="container-header mb-5">
+    <h1 class="text-center">Angular Date picker</h1>
+</div>
+
+<div class="container">
+    <div class="content date-picker-container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="input-group">
+                    <span class="input-group-text">Date picker</span>
+                    <input type="date" class="form-control" [min]="minDate" [max]="maxDate" name="datePicker" [(ngModel)]="datePicker">
+                </div>
+                <div class="mt-3 text-center">
+                    <h4>{{datePicker}}</h4>
+                </div>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+</div>
