@@ -18,9 +18,7 @@ export class DatePickerComponent implements OnInit {
     range: false
   }
 
-  constructor() {
-    
-  }
+  constructor() {}
 
   ngOnInit(): void {
   }
