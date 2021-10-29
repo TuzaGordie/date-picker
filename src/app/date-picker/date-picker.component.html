@@ -12,6 +12,9 @@
                     <input type="date" class="form-control" id="date" [min]="minDate" #dateString [max]="maxDate" name="datePicker" [(ngModel)]="datePicker" (blur)="check()">
                 </div>
                 <div class="mt-1" *ngIf="date.invalid">
+                    <p class="text-danger">*selected date is not a valid date</p>
+                </div>
+                <div class="mt-1" *ngIf="date.range">
                     <p class="text-danger">*selected date is out of date range</p>
                 </div>
 

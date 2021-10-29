@@ -15,6 +15,7 @@ export class DatePickerComponent implements OnInit {
   date = {
     valid: false,
     invalid: false,
+    range: false
   }
 
   constructor() {
@@ -29,10 +30,14 @@ export class DatePickerComponent implements OnInit {
     if (Object.prototype.toString.call(date) === "[object Date]") {
       if (isNaN(date.getTime())) {
         // date is not valid
+        this.date.range = false;
+        this.date.invalid = true;
         this.inputName.nativeElement.value = '';
       } else {
         // date is valid
         if(this.datePicker < this.minDate || this.datePicker > this.maxDate) {
+          this.date.invalid = false;
+          this.date.range = true;
           this.inputName.nativeElement.value = '';
         }
       }
