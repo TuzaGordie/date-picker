@@ -22,6 +22,9 @@
                 <div class="mt-1">
                     <h4>Selected date: "{{datePicker}}" </h4>
                 </div>
+                <div class="mt-1" *ngIf="date.valid">
+                    <p class="text-success">*selected date is a valid date</p>
+                </div>
             </div>
             <div class="col-4"></div>
         </div>

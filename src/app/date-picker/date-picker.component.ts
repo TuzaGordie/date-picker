@@ -33,6 +33,8 @@ export class DatePickerComponent implements OnInit {
         this.inputName.nativeElement.value = '';
       } else {
         // date is valid
+        this.date.range = false;
+        this.date.invalid = false;
         if(this.datePicker < this.minDate || this.datePicker > this.maxDate) {
           this.date.invalid = false;
           this.date.range = true;
@@ -42,17 +44,9 @@ export class DatePickerComponent implements OnInit {
     }
   }
 
-
   checkDate() {
-    this.date.valid = false;
-    if(this.datePicker < this.minDate || this.datePicker > this.maxDate) {
-      this.date.invalid = true;
-      console.log('yes')
-      this.datePicker = ''
-    } else{
-      this.date.invalid = false;
-      this.date.valid = true;
-    }
+    this.date.valid = true;
+    console.log(this.datePicker);
   }
 
 }
