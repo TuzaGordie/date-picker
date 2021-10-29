@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-date-picker',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./date-picker.component.scss']
 })
 export class DatePickerComponent implements OnInit {
+  @ViewChild('dateString') inputName: any;
 
   datePicker: any;
   minDate = '1980-10-28';
@@ -16,16 +17,28 @@ export class DatePickerComponent implements OnInit {
     invalid: false,
   }
 
-  constructor() {}
+  constructor() {
+    
+  }
 
   ngOnInit(): void {
   }
 
   check() {
-    if(this.datePicker < this.minDate || this.datePicker > this.maxDate) {
-      this.datePicker = ''
+    let date = new Date(this.datePicker);
+    if (Object.prototype.toString.call(date) === "[object Date]") {
+      if (isNaN(date.getTime())) {
+        // date is not valid
+        this.inputName.nativeElement.value = '';
+      } else {
+        // date is valid
+        if(this.datePicker < this.minDate || this.datePicker > this.maxDate) {
+          this.inputName.nativeElement.value = '';
+        }
+      }
     }
   }
+
 
   checkDate() {
     this.date.valid = false;
