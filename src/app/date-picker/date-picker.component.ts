@@ -8,7 +8,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class DatePickerComponent implements OnInit {
   @ViewChild('dateString') inputName: any;
 
-  datePicker: any;
+  startDatePicker: any;
+  endDatePicker: any;
   minDate = '1980-10-28';
   maxDate = '2099-10-28';
 
@@ -24,9 +25,10 @@ export class DatePickerComponent implements OnInit {
   }
 
   check() {
-    let date = new Date(this.datePicker);
-    if (Object.prototype.toString.call(date) === "[object Date]") {
-      if (isNaN(date.getTime())) {
+    let startDate = new Date(this.startDatePicker);
+    let endDate = new Date(this.startDatePicker);
+    if (Object.prototype.toString.call(startDate) === "[object Date]") {
+      if (isNaN(endDate.getTime())) {
         // date is not valid
         this.date.range = false;
         this.date.invalid = true;
@@ -35,7 +37,7 @@ export class DatePickerComponent implements OnInit {
         // date is valid
         this.date.range = false;
         this.date.invalid = false;
-        if(this.datePicker < this.minDate || this.datePicker > this.maxDate) {
+        if(this.startDatePicker < this.minDate || this.startDatePicker > this.maxDate) {
           this.date.invalid = false;
           this.date.range = true;
           this.inputName.nativeElement.value = '';
@@ -46,7 +48,7 @@ export class DatePickerComponent implements OnInit {
 
   checkDate() {
     this.date.valid = true;
-    console.log(this.datePicker);
+    console.log(this.startDatePicker);
   }
 
 }

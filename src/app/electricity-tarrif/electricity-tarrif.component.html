@@ -1,0 +1,137 @@
+<!-- <ng-container *ngIf="isMobile$ | async; else screenAvailable">
+    <div class="not-available">
+        <span>Zone configuration</span>
+        is only available on desktop or tablet. Please switch devices to view this page.
+    </div>
+</ng-container> -->
+<div #screenAvailable>
+  <!-- <bess-setting-confirmation-dialog></bess-setting-confirmation-dialog> -->
+  <h3 class="call-to-action-heading">
+    Please fill in the necessary data in order to configure Depot <span> depotName </span>!
+  </h3>
+  <form class="tariffs-form">
+    <fieldset>
+      <div class="zones-form__heading">
+        <h2>Electricity Tariffs</h2>
+        <label class="toggle" for="uniqueID">
+          <input type="checkbox" class="toggle__input" id="uniqueID" (change)="toggleFormVisibility()" />
+          <span class="toggle-track">
+            <span class="toggle-indicator"></span>
+          </span>
+        </label>
+      </div>
+      <div *ngIf="formVisible">
+        <hr *ngIf="formVisible">
+        <div class="box-body">
+          <p class="tarrif-paragraph">
+            Tarrifs set here will be used to calculate the cost of a energey used to charge buses. <br>
+            You can set 3 different tarrifs for the depot and the tarrifs <b>should cover 24 hours.</b> <br>
+            Tarrifs will be in effect from the point you saved it and wont affect previous calculations.
+          </p>
+          <span class="text-medium">Currency of the Depot</span>
+          <p>Cost of Electricity will appear in the selcected currency</p>
+
+          <select class="form-input select-currency mb-2" name="currency">
+            <option value="USD" selected>USD</option>
+            <option value="GBP">GBP</option>
+            <option value="CAD">CAD</option>
+            <option value="AUD">AUD</option>
+            <option value="NGN">NGN</option>
+          </select>
+
+          <hr>
+
+          <h6>Rate 1</h6>
+          <p>Cost per kWh</p>
+          <input class="form-input" style="width:90px" type="text">pence/kWh
+          <p>Time <span class="text-italic">(from-to)</span> </p>
+          <div class="box-time">
+            <p>from</p>
+            <input class="form-input" type="time">
+            <p> - to </p>
+            <input class="form-input" type="time">
+          </div>
+
+          <hr>
+
+          <div class="box-rate">
+           <div class="box-rate-inner">
+            <div>
+              <h6>Rate 2</h6>
+            </div>
+            <div>
+              <label class="toggle" for="uniqueID2">
+                <input type="checkbox" class="toggle__input" id="uniqueID2" (change)="rate2VisibilityToggle()"/>
+                <span class="toggle-track">
+                  <span class="toggle-indicator"></span>
+                </span>
+              </label>
+            </div>
+           </div>
+
+            <div *ngIf="rate2Visible">
+              <p>Cost per kWh</p>
+              <input class="form-input" style="width:90px" type="text">pence/kWh
+              <p>Time <span class="text-italic">(from-to)</span> </p>
+              <div class="box-time">
+                <p>from</p>
+                <input class="form-input" type="time">
+                <p> - to </p>
+                <input class="form-input" type="time">
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+
+          <div class="box-rate">
+            <div class="box-rate-inner">
+             <div>
+               <h6>Rate 3</h6>
+             </div>
+             <div>
+               <label class="toggle" for="uniqueID3">
+                 <input type="checkbox" class="toggle__input" id="uniqueID3" (change)="rate3VisibilityToggle()"/>
+                 <span class="toggle-track">
+                   <span class="toggle-indicator"></span>
+                 </span>
+               </label>
+             </div>
+            </div>
+ 
+             <div *ngIf="rate3Visible">
+               <p>Cost per kWh</p>
+               <input class="form-input" style="width:90px" type="text">pence/kWh
+               <p>Time <span class="text-italic">(from-to)</span> </p>
+               <div class="box-time">
+                 <p>from</p>
+                 <input class="form-input" type="time">
+                 <p> - to </p>
+                 <input class="form-input" type="time">
+               </div>
+             </div>
+           </div>
+
+        </div>
+      </div>
+    </fieldset>
+    <div>
+      <button type="button" class="btn">Cancel</button>
+      <button type="submit" class="btn btn--primary">Save configuration</button>
+    </div>
+  </form>
+  <div *ngIf="cancelDialogVisible" class="cancel-dialog">
+    <div class="cancel-dialog__body">
+      <!-- <bess-icon name="lost-progress-icon" [custom]="{ height: 64, width: 64 }"></bess-icon> -->
+      <p>
+        These are long forms to edit. <br />
+        By cancelling your modification your unsaved progress will be lost.
+      </p>
+      <div class="cancel-dialog__buttons">
+        <button type="button" class="btn" (click)="cancelDialogVisible = false">Keep editing</button>
+        <button type="button" class="btn btn--primary" (click)="confirmCancel()">Cancel configuration</button>
+      </div>
+    </div>
+  </div>
+</div>
