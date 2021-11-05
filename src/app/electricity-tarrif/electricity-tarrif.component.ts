@@ -13,6 +13,10 @@ export class ElectricityTarrifComponent implements OnInit {
   rate2Visible = false;
   rate3Visible = false;
 
+  selectedCurrency: string = 'AUD';
+  selectedCurrencySymbol: string = '';
+
+
   public cancelDialogVisible = false;
   public tariffsForm = this.fb.group({
     tariffs: this.fb.array([]),
@@ -21,6 +25,7 @@ export class ElectricityTarrifComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.selectedCurrencyState();
   }
 
   public confirmCancel() {
@@ -45,6 +50,16 @@ export class ElectricityTarrifComponent implements OnInit {
 
   rate3VisibilityToggle() {
     this.rate3Visible = !this.rate3Visible;
+  }
+
+  selectedCurrencyState() {
+    if(this.selectedCurrency === 'AUD') {
+      this.selectedCurrencySymbol = 'pence'
+    }else if(this.selectedCurrency === 'EUR') {
+      this.selectedCurrencySymbol = 'cents'
+    }else if(this.selectedCurrency === 'GBP') {
+      this.selectedCurrencySymbol = 'pence'
+    }
   }
 
 }

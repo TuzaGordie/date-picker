@@ -31,19 +31,17 @@
           <span class="text-medium">Currency of the Depot</span>
           <p>Cost of Electricity will appear in the selcected currency</p>
 
-          <select class="form-input select-currency mb-2" name="currency">
-            <option value="USD" selected>USD</option>
+          <select class="form-input select-currency mb-2" name="currency" [(ngModel)]="selectedCurrency" (change)=" selectedCurrencyState()">
+            <option selected value="AUD">AUD</option>
+            <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
-            <option value="CAD">CAD</option>
-            <option value="AUD">AUD</option>
-            <option value="NGN">NGN</option>
           </select>
 
           <hr>
 
           <h6>Rate 1</h6>
           <p>Cost per kWh</p>
-          <input class="form-input" style="width:90px" type="text">pence/kWh
+          <input class="form-input" style="width:90px" type="text" />{{selectedCurrencySymbol}}/kWh
           <p>Time <span class="text-italic">(from-to)</span> </p>
           <div class="box-time">
             <p>from</p>
@@ -71,7 +69,7 @@
 
             <div *ngIf="rate2Visible">
               <p>Cost per kWh</p>
-              <input class="form-input" style="width:90px" type="text">pence/kWh
+              <input class="form-input" style="width:90px" type="text">{{selectedCurrencySymbol}}/kWh
               <p>Time <span class="text-italic">(from-to)</span> </p>
               <div class="box-time">
                 <p>from</p>
@@ -102,7 +100,7 @@
  
              <div *ngIf="rate3Visible">
                <p>Cost per kWh</p>
-               <input class="form-input" style="width:90px" type="text">pence/kWh
+               <input class="form-input" style="width:90px" type="text">{{selectedCurrencySymbol}}/kWh
                <p>Time <span class="text-italic">(from-to)</span> </p>
                <div class="box-time">
                  <p>from</p>
