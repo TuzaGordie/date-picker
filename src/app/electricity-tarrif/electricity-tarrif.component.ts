@@ -13,14 +13,14 @@ export class ElectricityTarrifComponent implements OnInit {
   rate2Visible = false;
   rate3Visible = false;
 
-  selectedCurrency: string = 'AUD';
-  selectedCurrencySymbol: string = '';
+  selectedCurrency: string = 'GBP';
+  selectedCurrencyUnit: string = '';
 
 
   public cancelDialogVisible = false;
   public tariffsForm = this.fb.group({
     tariffs: this.fb.array([]),
-});
+  });
 
   constructor(private fb: FormBuilder) { }
 
@@ -54,11 +54,11 @@ export class ElectricityTarrifComponent implements OnInit {
 
   selectedCurrencyState() {
     if(this.selectedCurrency === 'AUD') {
-      this.selectedCurrencySymbol = 'pence'
+      this.selectedCurrencyUnit = 'pence'
     }else if(this.selectedCurrency === 'EUR') {
-      this.selectedCurrencySymbol = 'cents'
+      this.selectedCurrencyUnit = 'cents'
     }else if(this.selectedCurrency === 'GBP') {
-      this.selectedCurrencySymbol = 'pence'
+      this.selectedCurrencyUnit = 'pence'
     }
   }
 

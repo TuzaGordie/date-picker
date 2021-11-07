@@ -9,16 +9,14 @@
   <h3 class="call-to-action-heading">
     Please fill in the necessary data in order to configure Depot <span> depotName </span>!
   </h3>
-  <form class="tariffs-form">
+  <form [formGroup]="tariffsForm"  class="tariffs-form">
     <fieldset>
-      <div class="zones-form__heading">
+      <div class="tariffs-form__heading form-row--checkbox">
         <h2>Electricity Tariffs</h2>
-        <label class="toggle" for="uniqueID">
-          <input type="checkbox" class="toggle__input" id="uniqueID" (change)="toggleFormVisibility()" />
-          <span class="toggle-track">
-            <span class="toggle-indicator"></span>
-          </span>
-        </label>
+        <div class="form-row--checkbox__input">
+            <input type="checkbox" name="formVisible" [(ngModel)]="formVisible" [ngModelOptions]="{standalone: true}" />
+            <span></span>
+        </div>
       </div>
       <div *ngIf="formVisible">
         <hr *ngIf="formVisible">
@@ -31,7 +29,7 @@
           <span class="text-medium">Currency of the Depot</span>
           <p>Cost of Electricity will appear in the selcected currency</p>
 
-          <select class="form-input select-currency mb-2" name="currency" [(ngModel)]="selectedCurrency" (change)=" selectedCurrencyState()">
+          <select class="form-input select-currency mb-2" name="currency" [(ngModel)]="selectedCurrency" [ngModelOptions]="{standalone: true}" (change)=" selectedCurrencyState()">
             <option selected value="AUD">AUD</option>
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
@@ -41,7 +39,7 @@
 
           <h6>Rate 1</h6>
           <p>Cost per kWh</p>
-          <input class="form-input" style="width:90px" type="text" />{{selectedCurrencySymbol}}/kWh
+          <input class="form-input" style="width:90px" type="text" />{{selectedCurrencyUnit}}/kWh
           <p>Time <span class="text-italic">(from-to)</span> </p>
           <div class="box-time">
             <p>from</p>
@@ -53,54 +51,19 @@
           <hr>
 
           <div class="box-rate">
-           <div class="box-rate-inner">
-            <div>
-              <h6>Rate 2</h6>
-            </div>
-            <div>
-              <label class="toggle" for="uniqueID2">
-                <input type="checkbox" class="toggle__input" id="uniqueID2" (change)="rate2VisibilityToggle()"/>
-                <span class="toggle-track">
-                  <span class="toggle-indicator"></span>
-                </span>
-              </label>
-            </div>
-           </div>
-
-            <div *ngIf="rate2Visible">
-              <p>Cost per kWh</p>
-              <input class="form-input" style="width:90px" type="text">{{selectedCurrencySymbol}}/kWh
-              <p>Time <span class="text-italic">(from-to)</span> </p>
-              <div class="box-time">
-                <p>from</p>
-                <input class="form-input" type="time">
-                <p> - to </p>
-                <input class="form-input" type="time">
-              </div>
-            </div>
-          </div>
-
-          <hr>
-
-
-          <div class="box-rate">
-            <div class="box-rate-inner">
+            <div class="box-rate-inner form-row--checkbox">
              <div>
-               <h6>Rate 3</h6>
+               <h6 class="box-rate-name">Rate 2</h6>
              </div>
-             <div>
-               <label class="toggle" for="uniqueID3">
-                 <input type="checkbox" class="toggle__input" id="uniqueID3" (change)="rate3VisibilityToggle()"/>
-                 <span class="toggle-track">
-                   <span class="toggle-indicator"></span>
-                 </span>
-               </label>
+             <div class="form-row--checkbox__input">
+                 <input type="checkbox" name="rate2Visible" [(ngModel)]="rate2Visible" [ngModelOptions]="{standalone: true}" />
+                 <span></span>
              </div>
             </div>
  
-             <div *ngIf="rate3Visible">
+             <div *ngIf="rate2Visible">
                <p>Cost per kWh</p>
-               <input class="form-input" style="width:90px" type="text">{{selectedCurrencySymbol}}/kWh
+               <input class="form-input" style="width:90px" type="text">{{selectedCurrencyUnit}}/kWh
                <p>Time <span class="text-italic">(from-to)</span> </p>
                <div class="box-time">
                  <p>from</p>
@@ -110,6 +73,33 @@
                </div>
              </div>
            </div>
+
+          <hr>
+
+
+          <div class="box-rate">
+            <div class="box-rate-inner form-row--checkbox">
+             <div>
+               <h6 class="box-rate-name">Rate 3</h6>
+             </div>
+             <div class="form-row--checkbox__input">
+                <input type="checkbox" name="rate3Visible" [(ngModel)]="rate3Visible" [ngModelOptions]="{standalone: true}" />
+                <span></span>
+              </div>
+            </div>
+ 
+             <div *ngIf="rate3Visible">
+               <p>Cost per kWh</p>
+               <input class="form-input" style="width:90px" type="text">{{selectedCurrencyUnit}}/kWh
+               <p>Time <span class="text-italic">(from-to)</span> </p>
+               <div class="box-time">
+                 <p>from</p>
+                 <input class="form-input" type="time">
+                 <p> - to </p>
+                 <input class="form-input" type="time">
+               </div>
+             </div>
+          </div>
 
         </div>
       </div>

@@ -2,7 +2,7 @@
     <h1 class="text-center">Angular Date picker</h1>
 </div>
 
-<div class="container">
+<div class="container mb-5">
     <div class="content date-picker-container">
         <div class="row">
             <div class="col-6">
@@ -48,3 +48,94 @@
         </div>
     </div>
 </div>
+
+
+<div class="container">
+    <h3 class="text-primary">Rate 1</h3>
+    <div class="row">
+        <div class="col-6">
+            <div class="input-group">
+                <span class="input-group-text" for="date">Time picker</span>
+                <input type="time" class="form-control" id="date" [(ngModel)]="rate1startTime" format=24>
+            </div>
+            <div>
+                <h6>Selected Time: {{rate1startTime}}</h6>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="input-group">
+                <span class="input-group-text" for="date">Time picker</span>
+                <input type="time" class="form-control" id="date" [(ngModel)]="rate1endTime" format=24>
+            </div>
+            <div>
+                <h6>Selected Time: {{rate1endTime}}</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h3 class="text-primary">Rate 2</h3>
+    <div class="row">
+        <div class="col-6">
+            <div class="input-group">
+                <span class="input-group-text" for="date">Time picker</span>
+                <input type="time" class="form-control" id="date" [(ngModel)]="rate2startTime" format=24>
+            </div>
+            <div>
+                <h6>Selected Time: {{rate2startTime}}</h6>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="input-group">
+                <span class="input-group-text" for="date">Time picker</span>
+                <input type="time" class="form-control" id="date" [(ngModel)]="rate2endTime" format=24>
+            </div>
+            <div>
+                <h6>Selected Time: {{rate2endTime}}</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h3 class="text-primary">Rate 3</h3>
+    <div class="row">
+        <div class="col-6">
+            <div class="input-group">
+                <span class="input-group-text" for="date">Time picker</span>
+                <input type="time" class="form-control" id="date" [(ngModel)]="rate3startTime" format=24>
+            </div>
+            <div>
+                <h6>Selected Time: {{rate3startTime}}</h6>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="input-group">
+                <span class="input-group-text" for="date">Time picker</span>
+                <input type="time" class="form-control" id="date" [(ngModel)]="rate3endTime" format=24>
+            </div>
+            <div>
+                <h6>Selected Time: {{rate3endTime}}</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-primary col-12" (click)="subtractTime()">
+                check
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h3 class="text-success">{{finalTimeHoursCount}}</h3>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+

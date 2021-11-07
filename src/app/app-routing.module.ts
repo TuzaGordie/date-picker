@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 import { ElectricityTarrifComponent } from './electricity-tarrif/electricity-tarrif.component';
 
 const routes: Routes = [
-  {path: '', component: ElectricityTarrifComponent}
+  {path: 'lorem', component: ElectricityTarrifComponent},
+  {path: '', component: DatePickerComponent}
 ];
 
 @NgModule({
