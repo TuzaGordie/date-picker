@@ -50,79 +50,81 @@
 </div>
 
 
-<div class="container">
-    <h3 class="text-primary">Rate 1</h3>
-    <div class="row">
-        <div class="col-6">
-            <div class="input-group">
-                <span class="input-group-text" for="date">Time picker</span>
-                <input type="time" class="form-control" id="date" [(ngModel)]="rate1startTime" format=24>
+<!-- <form [formGroup]="tariffsForm">
+    <div class="container">
+        <h3 class="text-primary">Rate 1</h3>
+        <div class="row" formGroupName=“rateOne”>
+            <div class="col-6">
+                <div class="input-group">
+                    <span class="input-group-text" for="date">Time picker</span>
+                    <input type="time" class="form-control" name="startTime" id="date" format=24>
+                </div>
+                <div>
+                    <h6>Selected Time: {{rate1startTime}}</h6>
+                </div>
             </div>
-            <div>
-                <h6>Selected Time: {{rate1startTime}}</h6>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="input-group">
-                <span class="input-group-text" for="date">Time picker</span>
-                <input type="time" class="form-control" id="date" [(ngModel)]="rate1endTime" format=24>
-            </div>
-            <div>
-                <h6>Selected Time: {{rate1endTime}}</h6>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <h3 class="text-primary">Rate 2</h3>
-    <div class="row">
-        <div class="col-6">
-            <div class="input-group">
-                <span class="input-group-text" for="date">Time picker</span>
-                <input type="time" class="form-control" id="date" [(ngModel)]="rate2startTime" format=24>
-            </div>
-            <div>
-                <h6>Selected Time: {{rate2startTime}}</h6>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="input-group">
-                <span class="input-group-text" for="date">Time picker</span>
-                <input type="time" class="form-control" id="date" [(ngModel)]="rate2endTime" format=24>
-            </div>
-            <div>
-                <h6>Selected Time: {{rate2endTime}}</h6>
+            <div class="col-6">
+                <div class="input-group">
+                    <span class="input-group-text" for="date">Time picker</span>
+                    <input type="time" class="form-control" id="date" name="endTime" format=24>
+                </div>
+                <div>
+                    <h6>Selected Time: {{rate1endTime}}</h6>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="container">
-    <h3 class="text-primary">Rate 3</h3>
-    <div class="row">
-        <div class="col-6">
-            <div class="input-group">
-                <span class="input-group-text" for="date">Time picker</span>
-                <input type="time" class="form-control" id="date" [(ngModel)]="rate3startTime" format=24>
+    
+    <div class="container">
+        <h3 class="text-primary">Rate 2</h3>
+        <div class="row" formGroupName=“rateTwo”>
+            <div class="col-6">
+                <div class="input-group">
+                    <span class="input-group-text" for="date">Time picker</span>
+                    <input type="time" class="form-control" id="date" name="startTime" format=24>
+                </div>
+                <div>
+                    <h6>Selected Time: {{rate2startTime}}</h6>
+                </div>
             </div>
-            <div>
-                <h6>Selected Time: {{rate3startTime}}</h6>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="input-group">
-                <span class="input-group-text" for="date">Time picker</span>
-                <input type="time" class="form-control" id="date" [(ngModel)]="rate3endTime" format=24>
-            </div>
-            <div>
-                <h6>Selected Time: {{rate3endTime}}</h6>
+            <div class="col-6">
+                <div class="input-group">
+                    <span class="input-group-text" for="date">Time picker</span>
+                    <input type="time" class="form-control" id="date" name="endTime" format=24>
+                </div>
+                <div>
+                    <h6>Selected Time: {{rate2endTime}}</h6>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    
+    <div class="container">
+        <h3 class="text-primary">Rate 3</h3>
+        <div class="row" formGroupName=“rateThree”>
+            <div class="col-6">
+                <div class="input-group">
+                    <span class="input-group-text" for="date">Time picker</span>
+                    <input type="time" class="form-control" id="date" name="startTime" format=24>
+                </div>
+                <div>
+                    <h6>Selected Time: {{rate3startTime}}</h6>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="input-group">
+                    <span class="input-group-text" for="date">Time picker</span>
+                    <input type="time" class="form-control" name="endTime" id="date" format=24>
+                </div>
+                <div>
+                    <h6>Selected Time: {{rate3endTime}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</form> -->
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-12">
             <button class="btn btn-primary col-12" (click)="subtractTime()">
@@ -137,5 +139,43 @@
         </div>
         <div class="col-4"></div>
     </div>
-</div>
+</div> -->
 
+<div class="container">
+    <form [formGroup]="tariffsForm">
+        <div class="row">
+            <h3>Rate one</h3>
+            <div formGroupName="rateOne" class="d-flex">
+                <input type="time" class="form-control" name="startTime" id="date" format=24 formControlName="startTime">
+                <input type="time" class="form-control" name="endTime" id="date" format=24 formControlName="endTime">
+            </div>
+        </div>
+        <div class="row">
+            <h3>Rate Two</h3>
+            <div formGroupName="rateTwo" class="d-flex">
+                <input type="time" class="form-control" name="startTime" id="date" format=24 formControlName="startTime">
+                <input type="time" class="form-control" name="endTime" id="date" format=24 formControlName="endTime">
+            </div>
+        </div>
+        <div class="row">
+            <h3>Rate Three</h3>
+            <div formGroupName="rateThree" class="d-flex">
+                <input type="time" class="form-control" name="startTime" id="date" format=24 formControlName="startTime">
+                <input type="time" class="form-control" name="endTime" id="date" format=24 formControlName="endTime">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary col-12" (click)="subtractTime()">
+                    check
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>{{tariffsForm.value | json}}</p>
+                <h2 class="text-center text-success">{{finalTimeHoursCount}} hours</h2>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,5 +1,6 @@
-import { Time } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-date-picker',
@@ -9,19 +10,26 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class DatePickerComponent implements OnInit {
   @ViewChild('dateString') inputName: any;
 
+  public tariffsForm = this.fb.group({
+    rateOne: this.fb.group({
+      startTime: [''],
+      endTime: ['']
+    }),
+    rateTwo: this.fb.group({
+      startTime: [''],
+      endTime: [''],
+    }),
+    rateThree: this.fb.group({
+      startTime: [''],
+      endTime: [''],
+    }),
+  });
+
+
   startDatePicker: any;
   endDatePicker: any;
   minDate = '1980-10-28';
   maxDate = '2099-10-28';
-
-  rate1startTime: any;
-  rate1endTime: any;
-
-  rate2startTime: any;
-  rate2endTime: any;
-
-  rate3startTime: any;
-  rate3endTime: any;
 
   finalTimeHoursCount: any;
 
@@ -31,7 +39,9 @@ export class DatePickerComponent implements OnInit {
     range: false
   }
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {
+
+  }
 
   ngOnInit(): void {
   }
@@ -65,13 +75,16 @@ export class DatePickerComponent implements OnInit {
 
   subtractTime() {
 
-    let rate1startHM = this.rate1startTime;
-    let rate1endHM = this.rate1endTime;
-    let rate2startHM = this.rate2startTime;
-    let rate2endHM = this.rate2endTime;
-    let rate3startHM = this.rate3startTime;
-    let rate3endHM = this.rate3endTime;
+    let rate1startHM = this.tariffsForm.controls.rateOne.value.startTime;
+    let rate1endHM = this.tariffsForm.controls.rateOne.value.endTime;
+    let rate2startHM = this.tariffsForm.controls.rateTwo.value.startTime;
+    let rate2endHM = this.tariffsForm.controls.rateTwo.value.endTime;
+    let rate3startHM =  this.tariffsForm.controls.rateThree.value.startTime;
+    let rate3endHM = this.tariffsForm.controls.rateThree.value.endTime;
 
+    if (rate1endHM === '00:00') { rate1endHM = '24:00' }
+    else if (rate2endHM === '00:00') { rate2endHM = '24:00' } 
+    else if(rate3endHM === '00:00') { rate3endHM = '24:00' }
 
     let splitRate1startHm = rate1startHM.split(':');
     let splitRate1endHm = rate1endHM.split(':');
@@ -93,7 +106,7 @@ export class DatePickerComponent implements OnInit {
 
     let totalSecond = rate1secondsDifference + rate2secondsDifference + rate3secondsDifference
 
-    this.finalTimeHoursCount = totalSecond / 3600;
+    this.finalTimeHoursCount = (totalSecond / 3600) + 1;
   }
 
 }
